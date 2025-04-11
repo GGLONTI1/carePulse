@@ -43,6 +43,7 @@ interface CustomProps {
   defaultCountry?: "GE";
   international?: boolean;
   withCountryCallingCode?: boolean;
+  maxLength?: number;
 }
 
 const RenderInput = ({ field, props }: { field: any; props: CustomProps }) => {

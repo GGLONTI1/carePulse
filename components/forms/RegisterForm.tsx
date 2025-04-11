@@ -19,11 +19,10 @@ import {
 } from "@/constants";
 import { registerPatient } from "@/lib/actions/patient.actions";
 import { PatientFormValidation } from "@/lib/validation";
-
+import { FileUploader } from "@/components/FileUploader";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-phone-number-input/style.css";
-import CustomFormField, { FormFieldType } from "../CustomFormField";
-import { FileUploader } from "../FileUploader";
+import CustomFormField, { FormFieldType } from "@/components/CustomFormField";
 import SubmitButton from "../SubmitButton";
 
 const RegisterForm = ({ user }: { user: User }) => {
@@ -42,8 +41,6 @@ const RegisterForm = ({ user }: { user: User }) => {
 
   const onSubmit = async (values: z.infer<typeof PatientFormValidation>) => {
     setIsLoading(true);
-
-    // Store file info in form data as
     let formData;
     if (
       values.identificationDocument &&
@@ -141,6 +138,7 @@ const RegisterForm = ({ user }: { user: User }) => {
               control={form.control}
               name="phone"
               label="Phone Number"
+              maxLength={12}
               placeholder="(555) 123-4567"
             />
           </div>
